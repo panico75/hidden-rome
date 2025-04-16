@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roma: Iglesias Ocultas y Tesoros</title>
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #DAA520;
+            --background-color: #FFF8E7;
+            --text-color: #333;
+            --accent-color: #B22222;
+            --light-accent: #F5DEB3;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        h2, h3, h4 {
+            color: var(--primary-color);
+            margin: 20px 0 10px;
+        }
+        
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .itinerary-section {
+            margin: 40px 0;
+        }
+        
+        .attraction {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .attraction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .attraction-time {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .attraction-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .detail-box {
+            background-color: var(--light-accent);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .detail-box h4 {
+            margin-top: 0;
+            font-size: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .free-badge {
+            background-color: #4CAF50;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        .dining-options {
+            margin: 30px 0;
+        }
+        
+        .dining-options-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .dining-option {
+            flex: 1 1 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .dining-option:hover {
+            transform: translateY(-5px);
+        }
+        
+        .dining-option h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .dining-option-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .dining-detail {
+            background-color: var(--light-accent);
+            padding: 8px;
+            border-radius: 5px;
+        }
+        
+        .dining-detail h4 {
+            margin-top: 0;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+        
+        .dining-option p.description {
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .tips-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 40px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .tips-list {
+            list-style-type: none;
+        }
+        
+        .tips-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .tips-list li:before {
+            content: "✓";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .attraction-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .dining-option-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Roma: Iglesias Ocultas y Tesoros</h1>
+            <p>Un itinerario de un día a pie entre las maravillas menos conocidas de Roma</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="introduction">
+            <h2>Introducción</h2>
+            <p>Este itinerario te guiará a través de algunas de las iglesias más fascinantes y menos conocidas de Roma, junto con sitios arqueológicos de gran importancia. Partiendo de la Piazza Fanti cerca de la Estación Termini, explorarás el corazón antiguo de la ciudad, descubriendo tesoros ocultos, criptas subterráneas y magníficos mosaicos bizantinos.</p>
+            <p>El itinerario está diseñado para ser recorrido principalmente a pie, con algunas opciones de transporte público si es necesario. La duración total es de un día completo, con pausas para desayuno, almuerzo y cena en establecimientos romanos auténticos alejados de los circuitos turísticos más concurridos.</p>
+        </section>
+        
+        <section class="dining-options">
+            <h2>Opciones de Desayuno</h2>
+            <p>Comienza tu día con un delicioso desayuno en uno de estos auténticos establecimientos romanos:</p>
+            
+            <div class="dining-options-container">
+                <div class="dining-option">
+                    <h3>PANELLA</h3>
+                    <p class="description">Panadería histórica activa desde 1929, que ofrece excelentes productos de panadería frescos y café de calidad.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Via Merulana 54 (Esquilino)</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Horario</h4>
+                            <p>Diario: 7:00 - 22:00</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Pan artesanal, pasteles, pizza al corte</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Valoración</h4>
+                            <p>4,3/5 (más de 2.100 reseñas)</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Ubicación estratégica para comenzar el itinerario y excelente calidad de productos. Productos frescos se hornean aquí todos los días siguiendo recetas tradicionales.</p>
+                </div>
+                
+                <div class="dining-option">
+                    <h3>Pasticceria REGOLI</h3>
+                    <p class="description">Pastelería romana histórica fundada en 1916, famosa por sus maritozzi con crema.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Via dello Statuto 60 (Esquilino)</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Horario</h4>
+                            <p>Diario: 6:30 - 19:30, Cerrado los martes</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Maritozzi con crema, croissants, pasteles</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Valoración</h4>
+                            <p>4,5/5 (4.934 reseñas)</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Uno de los mejores maritozzi con crema en Roma, en un lugar histórico que ha mantenido recetas tradicionales desde 1916.</p>
+                </div>
+                
+                <div class="dining-option">
+                    <h3>FORNO CONTI</h3>
+                    <p class="description">Hermoso ambiente en el distrito Esquilino, especializado en pan artesanal y productos de panadería de alta calidad.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Via Giusti 18 (Esquilino)</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Horario</h4>
+                            <p>Lun-Vie: 8:30 - 18:00/19:00, Sáb: 8:30/9:00 - 15:30, Dom: cerrado</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Pain au chocolat, croissants, maritozzi, pan artesanal</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Valoración</h4>
+                            <p>4,4/5 (674 reseñas)</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Productos de alta calidad y café de especialidad. Ambiente acogedor y servicio atento.</p>
+                </div>
+                
+                <div class="dining-option">
+                    <h3>CASA DANTE</h3>
+                    <p class="description">Local versátil que sirve como bar, restaurante y punto de encuentro, convirtiéndose en una verdadera extensión de la plaza que enfrenta.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Piazza Dante 8 (Esquilino)</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Horario</h4>
+                            <p>Mar-Vie: 7:30 - 2:00, Sáb: 17:30 - 2:00, Lun: cerrado</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Desayuno italiano, brunch dominical, aperitivos</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Contacto</h4>
+                            <p>Tel. +39 06 85384091</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Ambiente informal y acogedor con mesas al aire libre. Ideal para quienes buscan una experiencia más relajada.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="itinerary-section">
+            <h2>Itinerario del Día</h2>
+            
+            <div class="attraction">
+                <div class="attraction-header">
+                    <h3>Basílica de los Santos Silvestre y Martín en los Montes</h3>
+                    <span class="attraction-time">9:00 - 9:30</span>
+                </div>
+                <p>Esta antigua basílica, que data del siglo IV, esconde tesoros subterráneos de gran valor histórico. Desde la nave central, puedes descender a pie a la cripta a través de una escalera claramente visible. La cripta, renovada en el siglo XVII, conserva las reliquias de mártires de las Catacumbas de Priscila. Desde aquí, a través de otra escalera, puedes acceder al Titulus Equitii, una villa romana del siglo III adaptada para el culto cristiano a principios del siglo IV.</p>
+                <div class="attraction-details">
+                    <div class="detail-box">
+                        <h4>Dirección</h4>
+                        <p>Viale del Monte Oppio 28</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Horario</h4>
+                        <p>8:30 - 12:45, 14:00 - 17:00</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Entrada</h4>
+                        <p>Gratuita <span class="free-badge">GRATIS</span></p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Tiempo de visita</h4>
+                        <p>30 minutos</p>
+                    </div>
+                </div>
+                <p><strong>Por qué es única:</strong> Es una de las iglesias más antiguas de Roma y conserva restos arqueológicos de gran valor, incluida una domus romana y estructuras termales del siglo III. Esta estratificación arqueológica ofrece una oportunidad única para viajar en el tiempo, desde las estructuras romanas originales hasta la basílica actual con sus 24 columnas corintias antiguas y techo artesonado de 1560.</p>
+            </div>
+            
+            <div class="attraction">
+                <div class="attraction-header">
+                    <h3>Basílica de San Pedro Encadenado</h3>
+                    <span class="attraction-time">10:00 - 10:30</span>
+                </div>
+                <p>Famosa por albergar el Moisés de Miguel Ángel, parte del monumento funerario del Papa Julio II. Esta escultura es considerada una de las obras maestras absolutas de Miguel Ángel, tallada de un solo bloque de mármol. La estatua representa a Moisés sentado, con una barba fluida y mirada intensa, mientras sostiene las tablas de la ley bajo su brazo. Un detalle interesante es que Miguel Ángel, unos años después de crear una primera versión, decidió modificar la posición del rostro y las piernas para dar a la escultura un mayor sentido de dinamismo y vitalidad.</p>
+                <div class="attraction-details">
+                    <div class="detail-box">
+                        <h4>Dirección</h4>
+                        <p>Piazza di San Pietro in Vincoli 4A</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Horario</h4>
+                        <p>8:00 - 12:30, 15:00 - 19:00</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Entrada</h4>
+                        <p>Gratuita <span class="free-badge">GRATIS</span></p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Tiempo de visita</h4>
+                        <p>30 minutos</p>
+                    </div>
+                </div>
+                <p><strong>Por qué es única:</strong> Además del famoso Moisés, la iglesia también alberga las cadenas que, según la tradición, ataron a San Pedro durante su encarcelamiento en Jerusalén. Las cadenas se conservan en un relicario bajo el altar principal y se muestran al público el 1 de agosto de cada año.</p>
+            </div>
+            
+            <div class="attraction">
+                <div class="attraction-header">
+                    <h3>Basílica de San Clemente</h3>
+                    <span class="attraction-time">11:00 - 12:00</span>
+                </div>
+                <p>Esta basílica ofrece un fascinante viaje a través de tres niveles de historia: la iglesia actual del siglo XII, una basílica del siglo IV debajo de ella, y en el nivel más bajo, un edificio romano del siglo I y un Mitreo del siglo II. El descenso a través de estas capas permite a los visitantes literalmente caminar a través de diferentes períodos históricos, desde la Roma antigua hasta la Edad Media.</p>
+                <div class="attraction-details">
+                    <div class="detail-box">
+                        <h4>Dirección</h4>
+                        <p>Via Labicana 95</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Horario</h4>
+                        <p>9:00 - 12:30, 15:00 - 18:00</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Entrada</h4>
+                        <p>10€ para los niveles subterráneos</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Tiempo de visita</h4>
+                        <p>1 hora</p>
+                    </div>
+                </div>
+                <p><strong>Por qué es única:</strong> La estratificación arqueológica es excepcional, con tres niveles distintos de edificios de diferentes épocas. El mosaico del ábside del siglo XII es uno de los más hermosos de Roma, y el Mitreo subterráneo es uno de los mejor conservados del mundo. En la basílica del siglo IV, también hay frescos con algunos de los primeros ejemplos de lengua italiana escrita.</p>
+            </div>
+        </section>
+        
+        <section class="dining-options">
+            <h2>Opciones de Almuerzo</h2>
+            <p>Después de una mañana de exploración, disfruta de un almuerzo en uno de estos establecimientos locales:</p>
+            
+            <div class="dining-options-container">
+                <div class="dining-option">
+                    <h3>Trattoria MONTI</h3>
+                    <p class="description">Restaurante familiar que ofrece cocina romana tradicional con un toque de influencia regional de Las Marcas.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Via di San Vito 13A (Monti)</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Horario</h4>
+                            <p>Mar-Sáb: 12:30 - 14:30, 19:30 - 23:00</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Tortello al rosso d'uovo, alcachofas romanas, pasta casera</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Precio medio</h4>
+                            <p>35-45€ por persona</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Cocina auténtica en un ambiente cálido y familiar. El restaurante está dirigido por dos hermanos que mantienen alta calidad y recetas tradicionales.</p>
+                </div>
+                
+                <div class="dining-option">
+                    <h3>Pizzeria ALLE CARRETTE</h3>
+                    <p class="description">Pizzería histórica en el corazón de Monti, famosa por su pizza fina y crujiente de estilo romano.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Via della Madonna dei Monti 95</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Horario</h4>
+                            <p>Diario: 12:00 - 15:00, 19:00 - 24:00</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Pizza romana, flores de calabacín fritas, supplì</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Precio medio</h4>
+                            <p>15-20€ por persona</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Excelente relación calidad-precio y pizza romana auténtica en un ambiente animado. Perfecto para un almuerzo rápido pero satisfactorio.</p>
+                </div>
+                
+                <div class="dining-option">
+                    <h3>MERCATO CENTRALE</h3>
+                    <p class="description">Mercado gastronómico moderno dentro de la Estación Termini con varios puestos de comida de alta calidad.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Via Giovanni Giolitti 36 (Termini)</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Horario</h4>
+                            <p>Diario: 8:00 - 24:00</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Varias cocinas regionales italianas</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Características</h4>
+                            <p>Múltiples opciones de comida, ambiente casual</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Gran variedad de opciones en un solo lugar, permitiendo a todos elegir según sus preferencias. Ideal para quienes quieren probar diferentes especialidades italianas.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="itinerary-section">
+            <h2>Itinerario de la Tarde</h2>
+            
+            <div class="attraction">
+                <div class="attraction-header">
+                    <h3>Basílica de Santa Práxedes</h3>
+                    <span class="attraction-time">14:00 - 14:30</span>
+                </div>
+                <p>Esta iglesia del siglo IX contiene algunos de los mosaicos bizantinos más hermosos de Roma, segundos solo a los de Rávena. La Capilla de San Zenón, encargada por el Papa Pascual I, está completamente cubierta de mosaicos dorados y es conocida como el "Jardín del Paraíso" por su esplendor.</p>
+                <div class="attraction-details">
+                    <div class="detail-box">
+                        <h4>Dirección</h4>
+                        <p>Via di Santa Prassede 9</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Horario</h4>
+                        <p>7:30 - 12:00, 16:00 - 18:30</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Entrada</h4>
+                        <p>Gratuita <span class="free-badge">GRATIS</span></p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Tiempo de visita</h4>
+                        <p>30 minutos</p>
+                    </div>
+                </div>
+                <p><strong>Por qué es única:</strong> La iglesia alberga un fragmento de la columna a la que supuestamente Jesús fue atado durante su flagelación, traído de Jerusalén en 1223. Los mosaicos bizantinos en el ábside y la Capilla de San Zenón son ejemplos extraordinarios del arte del siglo IX y están entre los mejor conservados en Roma.</p>
+            </div>
+            
+            <div class="attraction">
+                <div class="attraction-header">
+                    <h3>Basílica de Santa María la Mayor</h3>
+                    <span class="attraction-time">15:00 - 15:45</span>
+                </div>
+                <p>Una de las cuatro basílicas mayores de Roma, contiene magníficos mosaicos del siglo V que están entre las representaciones más antiguas de la Virgen María después del Concilio de Éfeso (431 d.C.), que la proclamó "Madre de Dios". La basílica también alberga una reliquia que se cree que es del pesebre de Jesús.</p>
+                <div class="attraction-details">
+                    <div class="detail-box">
+                        <h4>Dirección</h4>
+                        <p>Piazza di Santa Maria Maggiore 42</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Horario</h4>
+                        <p>7:00 - 19:00</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Entrada</h4>
+                        <p>Gratuita <span class="free-badge">GRATIS</span></p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Tiempo de visita</h4>
+                        <p>45 minutos</p>
+                    </div>
+                </div>
+                <p><strong>Por qué es única:</strong> Es la única basílica mayor que ha preservado su estructura cristiana primitiva, a pesar de las renovaciones posteriores. El techo artesonado está dorado con el primer oro traído de América, donado por los monarcas españoles Fernando e Isabel. La Capilla Borghese contiene el icono de "Salus Populi Romani", una de las imágenes marianas más veneradas en Roma.</p>
+            </div>
+            
+            <div class="attraction">
+                <div class="attraction-header">
+                    <h3>Basílica de Santa Pudenciana</h3>
+                    <span class="attraction-time">16:15 - 16:45</span>
+                </div>
+                <p>Considerada el lugar de culto cristiano más antiguo de Roma, esta iglesia se encuentra en el sitio de la casa del senador Pudens, quien según la tradición hospedó a San Pedro. El mosaico del ábside, que data de finales del siglo IV, es el mosaico cristiano más antiguo de Roma y representa a Cristo enseñando a los apóstoles.</p>
+                <div class="attraction-details">
+                    <div class="detail-box">
+                        <h4>Dirección</h4>
+                        <p>Via Urbana 160</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Horario</h4>
+                        <p>8:30 - 12:00, 15:00 - 18:00</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Entrada</h4>
+                        <p>Gratuita <span class="free-badge">GRATIS</span></p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Tiempo de visita</h4>
+                        <p>30 minutos</p>
+                    </div>
+                </div>
+                <p><strong>Por qué es única:</strong> El mosaico del ábside es de excepcional importancia histórica y artística, mostrando una transición entre los estilos romano y bizantino. La iglesia también contiene partes de la casa romana original, visibles en el nivel inferior.</p>
+            </div>
+            
+            <div class="attraction">
+                <div class="attraction-header">
+                    <h3>Basílica de Santa María de los Ángeles y los Mártires</h3>
+                    <span class="attraction-time">17:15 - 17:45</span>
+                </div>
+                <p>Diseñada por Miguel Ángel dentro de las ruinas de las Termas de Diocleciano, esta iglesia única incorpora el tepidarium (sala tibia) de las antiguas termas romanas. La iglesia también contiene la línea meridiana creada por Francesco Bianchini en 1702, un observatorio solar utilizado para medir el tiempo y determinar la fecha exacta de Pascua.</p>
+                <div class="attraction-details">
+                    <div class="detail-box">
+                        <h4>Dirección</h4>
+                        <p>Piazza della Repubblica</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Horario</h4>
+                        <p>7:00 - 18:30</p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Entrada</h4>
+                        <p>Gratuita <span class="free-badge">GRATIS</span></p>
+                    </div>
+                    <div class="detail-box">
+                        <h4>Tiempo de visita</h4>
+                        <p>30 minutos</p>
+                    </div>
+                </div>
+                <p><strong>Por qué es única:</strong> Es uno de los pocos ejemplos de una iglesia construida dentro de ruinas romanas antiguas, preservando la estructura original. La línea meridiana en el suelo sigue siendo funcional y es uno de los instrumentos astronómicos más grandes del mundo.</p>
+            </div>
+        </section>
+        
+        <section class="dining-options">
+            <h2>Opciones de Cena</h2>
+            <p>Completa tu día con una cena en uno de estos excelentes establecimientos:</p>
+            
+            <div class="dining-options-container">
+                <div class="dining-option">
+                    <h3>Trattoria MORGANA</h3>
+                    <p class="description">Trattoria romana tradicional que ofrece platos clásicos en un ambiente cálido y familiar.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Via Mecenate 19 (Esquilino)</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Horario</h4>
+                            <p>Lun-Sáb: 12:30 - 15:00, 19:30 - 23:00</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Carbonara, amatriciana, cacio e pepe, alcachofas romanas</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Precio medio</h4>
+                            <p>25-35€ por persona</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Cocina romana auténtica en una ubicación central, perfecta para terminar tu día de exploración con sabores tradicionales.</p>
+                </div>
+                
+                <div class="dining-option">
+                    <h3>Pizzeria LOFFREDO</h3>
+                    <p class="description">Pizzería con horno de leña, que ofrece excelente pizza de estilo romano en un entorno sencillo.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Via Urbana 12 (Monti)</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Horario</h4>
+                            <p>Mar-Dom: 19:00 - 23:30</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Pizza fina y crujiente, Pizza Margherita, Pizza Napoli con mozzarella de búfala</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Precio medio</h4>
+                            <p>Pizza: 8-12€, Entrantes: 5-8€</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Contacto</h4>
+                            <p>Tel. 06 70450605</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Un lugar auténtico frecuentado por romanos, con ambiente tradicional y excelente pizza, perfecto para concluir el día.</p>
+                </div>
+                
+                <div class="dining-option">
+                    <h3>Radici - pizzicheria salentina</h3>
+                    <p class="description">Gastronomía del Salento abierta en 2016 en un rincón tranquilo del distrito Esquilino.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Rione Esquilino, Roma</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Pasticciotti, pasteles rústicos, taralli, pucce, aperitivos de gin tonic</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Ideal para</h4>
+                            <p>Cena ligera o aperitivo</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Características</h4>
+                            <p>Productos directamente de Puglia</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Una alternativa a la cocina romana, con especialidades auténticas de Puglia en un ambiente acogedor.</p>
+                </div>
+                
+                <div class="dining-option">
+                    <h3>Hang Zhou da Sonia</h3>
+                    <p class="description">Gloria local del distrito Esquilino, es uno de los primeros restaurantes chinos en ganar (y mantener) cierta fama en la ciudad.</p>
+                    <div class="dining-option-details">
+                        <div class="dining-detail">
+                            <h4>Dirección</h4>
+                            <p>Área Esquilino (cerca de Piazza Vittorio)</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Especialidades</h4>
+                            <p>Cocina china tradicional</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Características</h4>
+                            <p>Gran local con muchas salas interiores, asientos al aire libre y salas más pequeñas con mesas redondas para grupos</p>
+                        </div>
+                        <div class="dining-detail">
+                            <h4>Ideal para</h4>
+                            <p>Cena, alternativa a la cocina italiana</p>
+                        </div>
+                    </div>
+                    <p><strong>Por qué aquí:</strong> Si después de un día de cocina italiana deseas un cambio, este es un restaurante chino auténtico apreciado por los locales.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tips-section">
+            <h2>Consejos de Viaje</h2>
+            <ul class="tips-list">
+                <li><strong>Ropa apropiada:</strong> Para visitar iglesias, asegúrate de que tus hombros y rodillas estén cubiertos. Lleva un pañuelo o chal ligero que puede ser útil si es necesario.</li>
+                <li><strong>Horarios de las iglesias:</strong> Siempre verifica los horarios de apertura antes de visitar, especialmente para iglesias que podrían estar cerradas durante celebraciones religiosas.</li>
+                <li><strong>Agua:</strong> Lleva una botella de agua reutilizable. Roma está llena de "nasoni", fuentes públicas donde puedes rellenar tu botella.</li>
+                <li><strong>Zapatos cómodos:</strong> El itinerario implica unos 5-6 km de caminata en total, así que usa zapatos cómodos.</li>
+                <li><strong>Entradas:</strong> Para las Termas de Caracalla, la Basílica de San Clemente (subterráneo) y la Domus Aurea, es aconsejable comprar entradas con anticipación para evitar colas.</li>
+                <li><strong>Clima:</strong> En caso de mal tiempo, considera usar transporte público entre algunas de las paradas más distantes.</li>
+                <li><strong>Seguridad:</strong> Como en cualquier gran ciudad turística, ten cuidado con los carteristas, especialmente en áreas concurridas.</li>
+                <li><strong>Respeto:</strong> Recuerda que estás visitando lugares de culto, así que mantén un comportamiento respetuoso y tranquilo.</li>
+                <li><strong>Fotografía:</strong> En muchas iglesias está prohibido tomar fotos con flash. Siempre verifica si la fotografía está permitida antes de hacerlo.</li>
+                <li><strong>Reservas:</strong> Para los restaurantes más populares, considera reservar con anticipación, especialmente para la cena.</li>
+            </ul>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Roma: Iglesias Ocultas y Tesoros by ENRICO PANICHELLI</p>
+        </div>
+    </footer>
+</body>
+</html>
